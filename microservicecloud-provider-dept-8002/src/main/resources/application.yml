@@ -1,0 +1,42 @@
+#踩坑指南 ：- 之后要留有空格
+server:
+  port: 8002
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml		#mybatis 配置文件所在路径
+  type-aliases-package: xiyan.entities                          #所有Entity 类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml    #mapper 映射文件
+spring:
+  application:
+    name: microservicecloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      #当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver          #org.gjt.mm.nysql-Dricer        #mysql操作包
+    url: jdbc:mysql://106.12.171.124:3306/xiyan2      #数据库名称
+    username: root                                    
+    password: xiyan
+    dbcp2: 
+      min-idle: 5                                    #数据库链接池最小维持链接数
+      initial-size: 5                                #初始化连接数
+      max-total: 5                                   #最大连接数
+      max-wait-millis: 200                           #等待连接获取的最大超时时间
+       
+
+eureka:
+   client:                                          #将客户端注册进eureka
+      service-url:
+         #单机 defaultZone: http://eureka7001.com:7001/eureka
+         defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka  #eureka 服务端地址
+   instance:
+      instance-id: microservicecloud-dept8002      #provider 在eureka中的名字
+      prefer-ip-address: true                       #访问路径可以显示IP
+      
+      
+info:
+   app.name: xiyan-microservicecloud
+   company.name: xiyan
+   build.artifactId: $project.artifactId$
+   build.version: $project.version$
+   explain: dept provider 部门的服务端 by 黄兴瑞
+   
+      

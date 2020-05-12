@@ -1,0 +1,32 @@
+server:
+   port: 9527
+   
+spring:
+   application:
+      name: microservicecloud-zuul-gateway
+      
+      
+eureka:
+   client:                                          #将客户端注册进eureka
+      service-url:
+         #单机 defaultZone: http://eureka7001.com:7001/eureka
+         defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka  #eureka 服务端地址
+   instance:
+      instance-id: gateway-9527       #provider 在eureka中的名字
+      prefer-ip-address: true   
+
+#zuul 地址隐藏
+zuul:
+   ignored-services: "*"
+   prefix: /xiyan
+   routes:
+      mydept.serviceId: microservicecloud-dept
+      mydept.path: /mydept/**
+      
+info:
+   app.name: zuul_9527
+   build.version: ${project.version}
+   by: xingrui
+   date: 2020-05-09 17:07
+   
+ 

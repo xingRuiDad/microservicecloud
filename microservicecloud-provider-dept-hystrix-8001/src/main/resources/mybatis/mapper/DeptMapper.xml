@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="xiyan.dao.DeptDao">
+
+	<!-- 根据Id查询当行 -->
+	<select id="findById" resultType="Dept" parameterType="Long">
+		select d.deptno,d.dname,d.db_source from dept d where d.deptno=#{deptno};
+	</select>
+	
+	<!-- 查询全部 -->
+	<select id="findAll" resultType="Dept">
+		select d.deptno,d.dname,d.db_source from dept d;
+	</select>
+	
+	<!-- 单行插入 -->
+	<insert id="addDept" parameterType="Dept">
+	  INSERT INTO dept(deptno,dname,db_source) VALUES(10,'开发部',DATABASE());
+	</insert>
+
+</mapper>

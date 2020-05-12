@@ -1,0 +1,7 @@
+spring:
+   cloud:
+      config:
+         name: microservicecloud-config-client
+         profile: dev
+         label: master
+         uri: http://localhost:3344  #本微服务通过 3344号服务 通过springconfigConfig 获取github的服务地址
